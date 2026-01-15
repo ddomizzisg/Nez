@@ -29,7 +29,7 @@ def deploy():
   if not rj.get('wf_name'):
     return jsonify(res), s
   c = os.sep.join([os.getcwd(), 'cfg-files', rj.get('wf_name') + '.cfg'])
-  args = './puzzlemesh/puzzlemesh -c '+c+' -m ' + rj.get('deployment_mode')
+  args = './src/nez -c '+c+' -m ' + rj.get('deployment_mode')
   print(args, flush=True)
   sp = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   sp.wait()
@@ -49,7 +49,7 @@ def run():
   if not rj.get('wf_name'):
     return jsonify(res), s
   c = os.sep.join([os.getcwd(), 'cfg-files', rj.get('wf_name') + '.cfg'])
-  args = './puzzlemesh/puzzlemesh -c '+c+' -m ' + rj.get('deployment_mode') + " -exec T -api " + rj.get('apikey') + " -access " + rj.get('access_token')+ " -token " + rj.get('tokenuser')
+  args = './src/nez -c '+c+' -m ' + rj.get('deployment_mode') + " -exec T -api " + rj.get('apikey') + " -access " + rj.get('access_token')+ " -token " + rj.get('tokenuser')
   print(args, flush=True)
   sp = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   sp.wait()
@@ -70,7 +70,7 @@ def stop():
   if not rj.get('wf_name'):
     return jsonify(res), s
   c = os.sep.join([os.getcwd(), 'cfg-files', rj.get('wf_name') + '.cfg'])
-  args = './puzzlemesh/puzzlemesh -c '+c+' -m ' + rj.get('deployment_mode') + " -stop T  "
+  args = './src/nez -c '+c+' -m ' + rj.get('deployment_mode') + " -stop T  "
   print(args, flush=True)
   sp = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   sp.wait()
